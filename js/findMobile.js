@@ -9,16 +9,17 @@ const searchMobile =() =>{
     searchInput.value = ''
 }
 const findMobiles= arr=>{
-    console.log(arr)
     //get search value by getting it calling id 
     const parentElement = document.getElementById('search-result');
     //get hidden details section to work with it
     const details = document.getElementById('phoneDetails')
     //get show not found section for showing errors 
     const showNotFound = document.getElementById('show-noData')
+    
     //remove previous results when search again
     showNotFound.style.display='none';
     details.style.display='none';
+
     //through error when nothing found
     if(arr.length==0){
         showNotFound.style.display='block';
@@ -30,8 +31,8 @@ const findMobiles= arr=>{
         const div = document.createElement('div')
         div.classList.add('col')
         div.innerHTML=`
-        <div class="card rounded" style="width: 18rem;height: 22rem;">
-            <img src="${phone.image}" class="card-img-top w-50  p-3" alt="...">
+        <div class="card rounded" style="width:18rem; height: 22rem;">
+            <img src="${phone.image}" class="card-img-top w-50 img-fluid p-3" alt="...">
             <div class="card-body">
               <h5 class="card-title">${phone.brand}</h5>
               <p class="card-text">${phone.phone_name}.</p>
@@ -43,11 +44,13 @@ const findMobiles= arr=>{
     });
     // tryed to show extra phones to after clicking show More button
     if(Object.keys(arr).length>20){
+        const showMore = document.getElementById('show-more')
         const showDiv = document.createElement('div')
         showDiv.innerHTML=`
-        <button onclick="showMore(${JSON.stringify(arr).split('"').join("&quot;")})" id="showRemaining" class="btn btn-warning mb-4">Show more</button>
+        <button onclick=
+        "showMore(${JSON.stringify(arr).split('"').join("&quot;")})" id="showRemaining" class="btn btn-warning my-4">Show more</button>
         `;
-        parentElement.appendChild(showDiv);
+        showMore.appendChild(showDiv);
     }
     
 }
@@ -64,7 +67,7 @@ const showMore = obj =>{
         div.classList.add('col')
         div.innerHTML=`
         <div class="card rounded" style="width: 18rem;height: 22rem;">
-            <img src="${phone.image}" class="card-img-top w-50  p-3" alt="...">
+            <img src="${phone.image}" class="card-img-top w-50 img-fluid p-3" alt="...">
             <div class="card-body">
               <h5 class="card-title">${phone.brand}</h5>
               <p class="card-text">${phone.phone_name}.</p>
