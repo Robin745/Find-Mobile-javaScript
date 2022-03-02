@@ -15,7 +15,7 @@ const findMobiles= arr=>{
     const details = document.getElementById('phoneDetails')
     //get show not found section for showing errors 
     const showNotFound = document.getElementById('show-noData')
-    
+
     //remove previous results when search again
     showNotFound.style.display='none';
     details.style.display='none';
@@ -42,6 +42,7 @@ const findMobiles= arr=>{
         `;
         parentElement.appendChild(div);
     });
+
     // tryed to show extra phones to after clicking show More button
     if(Object.keys(arr).length>20){
         const showMore = document.getElementById('show-more')
@@ -88,6 +89,7 @@ const getPhoneId = id =>{
     .then(data => displayDetails(data.data))
 }
 
+//show details information containning ( Sensorc & others )
 const displayDetails = id =>{
     console.log(id);
     const details = document.getElementById('phoneDetails')
@@ -104,9 +106,12 @@ const displayDetails = id =>{
         <ul class="list-group">
           <li class="list-group-item"> <span class="fw-bold">Storage: </span> ${id.mainFeatures.storage}</li>
           <li class="list-group-item"><span class="fw-bold">displaySize: </span> ${id.mainFeatures.displaySize}</li>
+          <li class="list-group-item"><span class="fw-bold">Sensors: </span> ${id.mainFeatures.sensors}</li>
           <li class="list-group-item"><span class="fw-bold">chipSet:</span> ${id.mainFeatures.chipSet}</li>
-          <li class="list-group-item"><span class="fw-bold">WLAN:</span> ${id.others.WLAN}</li>
+          <li class="list-group-item"><span class="fw-bold">Bluetooth:</span> ${id.others.Bluetooth}</li>
           <li class="list-group-item"><span class="fw-bold">GPS:</span> ${id.others.GPS}</li>
+          <li class="list-group-item"><span class="fw-bold">WLAN:</span> ${id.others.WLAN}</li>
+          <li class="list-group-item"><span class="fw-bold">USB:</span> ${id.others.USB}</li>
         </ul>
       </div>
     `
